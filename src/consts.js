@@ -1,4 +1,5 @@
 export const SENA = {
+  name: "SENA",
   min_of_dozens: 6,
   max_of_dozens: 15,
   amount_of_dozens: 60,
@@ -17,6 +18,7 @@ export const SENA = {
 };
 
 export const QUINA = {
+  name: "QUINA",
   min_of_dozens: 5,
   max_of_dozens: 15,
   amount_of_dozens: 81,

@@ -33,9 +33,9 @@ export default createStore({
   getters: {
     gamePrice: (state) => {
       const amountOfSelectedDozens = state.selectedDozens.length;
-      return state.defaultConfig.prices.find(
-        (game) => game.amount === amountOfSelectedDozens
-      ).price;
+      return state.defaultConfig.prices
+        .find((game) => game.amount === amountOfSelectedDozens)
+        .price.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
     },
     ascendingSelectedDozens: (state) => {
       return state.selectedDozens.sort((a, b) => a - b).toString();

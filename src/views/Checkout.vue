@@ -2,7 +2,7 @@
   <div class="checkout"></div>
   <p>MENSAGEM!!!</p>
 
-  <p>Valor Total R$ {{ this.$store.getters.gamePrice }}</p>
+  <p>Valor Total {{ this.$store.getters.gamePrice }}</p>
 </template>
 
 <script>

@@ -33,7 +33,7 @@
     <game-card :amount="amountOfDozens"></game-card>
     <p>{{ $store.getters.ascendingSelectedDozens }}</p>
     <div v-if="showTotalPrice">
-      <p>Valor R$ {{ this.$store.getters.gamePrice }}</p>
+      <p>Valor {{ this.$store.getters.gamePrice }}</p>
       <div class="d-grid gap-2 col-6 mx-auto">
         <button @click="goToCheckout" class="btn btn-primary" type="button">
           Button

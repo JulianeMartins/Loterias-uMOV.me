@@ -1,5 +1,11 @@
 import { createStore } from "vuex";
-import { SENA, QUINA } from "../consts";
+import {
+  SENA,
+  QUINA,
+  CHANGE_DEFAULT_CONFIG,
+  CLEAR_SELECTED_DOZENS,
+  CHANGE_SELECTED_DOZENS,
+} from "../consts";
 
 export default createStore({
   state: {
@@ -19,15 +25,15 @@ export default createStore({
   },
   actions: {
     changeCardToQuina({ commit }) {
-      commit("CHANGE_DEFAULT_CONFIG", QUINA);
-      commit("CLEAR_SELECTED_DOZENS");
+      commit(CHANGE_DEFAULT_CONFIG, QUINA);
+      commit(CLEAR_SELECTED_DOZENS);
     },
     changeCardToSena({ commit }) {
-      commit("CHANGE_DEFAULT_CONFIG", SENA);
-      commit("CLEAR_SELECTED_DOZENS");
+      commit(CHANGE_DEFAULT_CONFIG, SENA);
+      commit(CLEAR_SELECTED_DOZENS);
     },
     changeSelectedDozens({ commit }, dozens) {
-      commit("CHANGE_SELECTED_DOZENS", dozens);
+      commit(CHANGE_SELECTED_DOZENS, dozens);
     },
   },
   getters: {
@@ -42,6 +48,6 @@ export default createStore({
     },
     selectedDozensLength: (state) => {
       return state.selectedDozens.length;
-    }
+    },
   },
 });

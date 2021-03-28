@@ -16,7 +16,7 @@
                 autocomplete="off"
                 :value="item"
                 :disabled="hasMaxDozens && !isSelect(item)"
-                v-model="selectedDozens"
+                v-model="modelDozens"
               />
               <label class="btn" :for="`btncheck-${item}`">
                 {{ item }}
@@ -30,37 +30,38 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+import { TYPE_SENA } from "../consts";
 export default {
   name: "GameCard",
   computed: {
+    ...mapState(["defaultConfig", "selectedDozens"]),
     dozens() {
-      const type = this.$store.state.defaultConfig.name;
+      const type = this.defaultConfig.name;
       return Array.from({ length: this.amount }, (x, i) =>
-        type === "SENA" ? i + 1 : i
+        type === TYPE_SENA ? i + 1 : i
       );
     },
     hasMaxDozens() {
-      const amountOfSelectItens = this.$store.state.selectedDozens.length;
-      const maxDozens = this.$store.state.defaultConfig.max_of_dozens;
+      const amountOfSelectItens = this.selectedDozens.length;
+      const maxDozens = this.defaultConfig.max_of_dozens;
 
       return amountOfSelectItens === maxDozens;
     },
-    selectedDozens: {
+    modelDozens: {
       get() {
-        return this.$store.state.selectedDozens;
+        return this.selectedDozens;
       },
       set(value) {
-        this.$store.dispatch("changeSelectedDozens", value);
+        this.changeSelectedDozens(value);
       },
     },
-  },
-  data() {
-    return {};
   },
   props: {
     amount: Number,
   },
   methods: {
+    ...mapActions(["changeSelectedDozens"]),
     isSelect(dozen) {
       return this.selectedDozens.some((d) => d === dozen);
     },

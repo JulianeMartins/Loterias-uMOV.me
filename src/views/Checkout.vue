@@ -6,16 +6,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Checkout",
   components: {},
   props: {
     msg: String,
   },
-  data() {
-    return {
-      totalPrice: this.$store.getters.gamePrice,
-    };
+  computed: {
+    ...mapGetters({ totalPrice: "gamePrice" }),
   },
 };
 </script>

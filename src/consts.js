@@ -1,5 +1,10 @@
+export const CHANGE_DEFAULT_CONFIG = "CHANGE_DEFAULT_CONFIG";
+export const CLEAR_SELECTED_DOZENS = "CLEAR_SELECTED_DOZENS";
+export const CHANGE_SELECTED_DOZENS = "CHANGE_SELECTED_DOZENS";
+export const TYPE_SENA = "SENA";
+export const TYPE_QUINA = "QUINA";
 export const SENA = {
-  name: "SENA",
+  name: TYPE_SENA,
   startsIn: 1,
   min_of_dozens: 6,
   max_of_dozens: 15,
@@ -19,7 +24,7 @@ export const SENA = {
 };
 
 export const QUINA = {
-  name: "QUINA",
+  name: TYPE_QUINA,
   startsIn: 0,
   min_of_dozens: 5,
   max_of_dozens: 15,

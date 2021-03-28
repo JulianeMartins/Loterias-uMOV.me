@@ -1,10 +1,15 @@
 <template>
-  <header class="pb-3 d-flex justify-content-center align-items-center">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <h1 class="m-0">Loterias</h1>
-  </header>
+  <u-header></u-header>
   <router-view />
 </template>
+<script>
+import UHeader from "./components/Header";
+export default {
+  components: {
+    UHeader,
+  },
+};
+</script>
 
 <style lang="scss">
 @import "./assets/scss/_variables.scss";

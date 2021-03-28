@@ -40,5 +40,8 @@ export default createStore({
     ascendingSelectedDozens: (state) => {
       return state.selectedDozens.sort((a, b) => a - b).toString();
     },
+    selectedDozensLength: (state) => {
+      return state.selectedDozens.length;
+    }
   },
 });

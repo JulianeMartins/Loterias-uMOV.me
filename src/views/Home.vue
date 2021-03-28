@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <div
-      class="btn-group"
+      class="pb-3 d-block w-100 btn-group u-btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
     >
@@ -16,7 +16,7 @@
         checked
         value="SENA"
       />
-      <label class="btn btn-outline-primary" for="btnradio1">Sena</label>
+      <label class="btn" for="btnradio1">Sena</label>
 
       <input
         @change="onChangeGameCard($event)"
@@ -28,15 +28,25 @@
         autocomplete="off"
         value="QUINA"
       />
-      <label class="btn btn-outline-primary" for="btnradio2">Quina</label>
+      <label class="btn" for="btnradio2">Quina</label>
     </div>
     <game-card :amount="amountOfDozens"></game-card>
-    <p>{{ $store.getters.ascendingSelectedDozens }}</p>
+
+    <p class="py-3">
+      <span v-if="!this.$store.getters.selectedDozensLength"
+        >Você ainda não marcou nenhuma dezena!</span
+      >
+      <span v-else
+        >Você Jogou as seguintes dezenas:
+        {{ $store.getters.ascendingSelectedDozens }}
+      </span>
+    </p>
+
     <div v-if="showTotalPrice">
       <p>Valor {{ this.$store.getters.gamePrice }}</p>
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button @click="goToCheckout" class="btn btn-primary" type="button">
-          Button
+      <div class="d-flex justify-content-center">
+        <button @click="goToCheckout" class="btn u-btn" type="button">
+          Confirmar Jogo
         </button>
       </div>
     </div>
@@ -46,7 +56,7 @@
 <script>
 import GameCard from "../components/GameCard";
 export default {
-  name: "HelloWorld",
+  name: "Home",
   components: {
     GameCard,
   },
@@ -55,7 +65,7 @@ export default {
       return this.$store.state.defaultConfig.amount_of_dozens;
     },
     showTotalPrice() {
-      const selectedDozensLength = this.$store.state.selectedDozens.length;
+      const selectedDozensLength = this.$store.getters.selectedDozensLength;
       const minOfDozens = this.$store.state.defaultConfig.min_of_dozens;
       return selectedDozensLength >= minOfDozens;
     },
@@ -90,7 +100,6 @@ export default {
       this.$router.push({ name: "Checkout" });
     },
   },
-  created() {},
 };
 </script>
 

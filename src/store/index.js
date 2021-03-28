@@ -4,19 +4,41 @@ import { SENA, QUINA } from "../consts";
 export default createStore({
   state: {
     defaultConfig: SENA,
+    selectedDozens: [],
   },
   mutations: {
     CHANGE_DEFAULT_CONFIG(state, config) {
       state.defaultConfig = { ...config };
     },
+    CHANGE_SELECTED_DOZENS(state, dozens) {
+      state.selectedDozens = [...dozens];
+    },
+    CLEAR_SELECTED_DOZENS(state) {
+      state.selectedDozens = [];
+    },
   },
   actions: {
     changeCardToQuina({ commit }) {
       commit("CHANGE_DEFAULT_CONFIG", QUINA);
+      commit("CLEAR_SELECTED_DOZENS");
     },
     changeCardToSena({ commit }) {
       commit("CHANGE_DEFAULT_CONFIG", SENA);
+      commit("CLEAR_SELECTED_DOZENS");
+    },
+    changeSelectedDozens({ commit }, dozens) {
+      commit("CHANGE_SELECTED_DOZENS", dozens);
     },
   },
-  modules: {},
+  getters: {
+    gamePrice: (state) => {
+      const amountOfSelectedDozens = state.selectedDozens.length;
+      return state.defaultConfig.prices.find(
+        (game) => game.amount === amountOfSelectedDozens
+      ).price;
+    },
+    ascendingSelectedDozens: (state) => {
+      return state.selectedDozens.sort((a, b) => a - b).toString();
+    },
+  },
 });

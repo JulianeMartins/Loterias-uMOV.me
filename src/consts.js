@@ -1,5 +1,6 @@
 export const SENA = {
   name: "SENA",
+  startsIn: 1,
   min_of_dozens: 6,
   max_of_dozens: 15,
   amount_of_dozens: 60,
@@ -19,6 +20,7 @@ export const SENA = {
 
 export const QUINA = {
   name: "QUINA",
+  startsIn: 0,
   min_of_dozens: 5,
   max_of_dozens: 15,
   amount_of_dozens: 81,
@@ -28,11 +30,11 @@ export const QUINA = {
     { amount: 7, price: 42 },
     { amount: 8, price: 112 },
     { amount: 9, price: 252 },
-    { amount: 1, price0: 504 },
-    { amount: 1, price1: 924 },
-    { amount: 1, price2: 1584 },
-    { amount: 1, price3: 2574 },
-    { amount: 1, price4: 4004 },
-    { amount: 1, price5: 6006 },
+    { amount: 10, price: 504 },
+    { amount: 11, price: 924 },
+    { amount: 12, price: 1584 },
+    { amount: 13, price: 2574 },
+    { amount: 14, price: 4004 },
+    { amount: 15, price: 6006 },
   ],
 };

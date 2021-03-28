@@ -31,6 +31,15 @@
       <label class="btn btn-outline-primary" for="btnradio2">Quina</label>
     </div>
     <game-card :amount="amountOfDozens"></game-card>
+    <p>{{ $store.getters.ascendingSelectedDozens }}</p>
+    <div v-if="showTotalPrice">
+      <p>Valor R$ {{ this.$store.getters.gamePrice }}</p>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button @click="goToCheckout" class="btn btn-primary" type="button">
+          Button
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,6 +53,11 @@ export default {
   computed: {
     amountOfDozens() {
       return this.$store.state.defaultConfig.amount_of_dozens;
+    },
+    showTotalPrice() {
+      const selectedDozensLength = this.$store.state.selectedDozens.length;
+      const minOfDozens = this.$store.state.defaultConfig.min_of_dozens;
+      return selectedDozensLength >= minOfDozens;
     },
   },
   data() {
@@ -71,6 +85,9 @@ export default {
     },
     changeToSena() {
       this.$store.dispatch("changeCardToSena");
+    },
+    goToCheckout() {
+      this.$router.push({ name: "Checkout" });
     },
   },
   created() {},

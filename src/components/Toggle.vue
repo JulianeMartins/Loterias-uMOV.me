@@ -15,7 +15,12 @@
         v-model="selected"
         :value="item.value"
       />
-      <label class="btn" :for="item.value">{{ item.label }}</label>
+      <label
+        :dataTestId="`label-${item.value}`"
+        class="btn"
+        :for="item.value"
+        >{{ item.label }}</label
+      >
     </template>
   </div>
 </template>

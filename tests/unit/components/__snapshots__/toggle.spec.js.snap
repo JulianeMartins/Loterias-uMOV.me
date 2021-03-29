@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle match snapshot 1`] = `
+<div
+  aria-label="Basic radio toggle button group"
+  class="pb-3 btn-group u-btn-group"
+  role="group"
+>
+  
+  
+  <input
+    autocomplete="off"
+    class="btn-check"
+    id="0"
+    name="cardType"
+    type="radio"
+    value="0"
+  />
+  <label
+    class="btn"
+    datatestid="label-0"
+    for="0"
+  >
+    Option 0
+  </label>
+  
+  
+  <input
+    autocomplete="off"
+    class="btn-check"
+    id="1"
+    name="cardType"
+    type="radio"
+    value="1"
+  />
+  <label
+    class="btn"
+    datatestid="label-1"
+    for="1"
+  >
+    Option 1
+  </label>
+  
+  
+</div>
+`;

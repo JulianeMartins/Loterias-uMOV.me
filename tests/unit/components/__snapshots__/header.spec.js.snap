@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header match snapshot 1`] = `
+<header
+  class="pb-3 d-flex justify-content-center align-items-center"
+>
+  <img
+    alt="Vue logo"
+    src=""
+  />
+  <h1
+    class="m-0"
+  >
+    Loterias
+  </h1>
+</header>
+`;

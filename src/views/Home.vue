@@ -1,35 +1,6 @@
 <template>
   <div class="home">
-    <div
-      class="pb-3 d-block w-100 btn-group u-btn-group"
-      role="group"
-      aria-label="Basic radio toggle button group"
-    >
-      <input
-        v-model="cardType"
-        @change="onChangeGameCard($event)"
-        type="radio"
-        class="btn-check"
-        name="cardType"
-        id="btnradio1"
-        autocomplete="off"
-        checked
-        :value="TYPE_SENA"
-      />
-      <label class="btn" for="btnradio1">Sena</label>
-
-      <input
-        @change="onChangeGameCard($event)"
-        v-model="cardType"
-        type="radio"
-        class="btn-check"
-        name="cardType"
-        id="btnradio2"
-        autocomplete="off"
-        :value="TYPE_QUINA"
-      />
-      <label class="btn" for="btnradio2">Quina</label>
-    </div>
+    <toggle :options="options" @change="onChangeGameCard"></toggle>
     <game-card :amount="amountOfDozens"></game-card>
 
     <p class="py-3">
@@ -57,10 +28,12 @@
 import { mapActions, mapGetters, mapState } from "vuex";
 import { TYPE_SENA, TYPE_QUINA } from "../consts";
 import GameCard from "../components/GameCard";
+import Toggle from "../components/Toggle";
 export default {
   name: "Home",
   components: {
     GameCard,
+    Toggle,
   },
   computed: {
     ...mapGetters([
@@ -85,6 +58,16 @@ export default {
     return {
       TYPE_SENA: TYPE_SENA,
       TYPE_QUINA: TYPE_QUINA,
+      options: [
+        {
+          label: "Sena",
+          value: TYPE_SENA,
+        },
+        {
+          label: "Quina",
+          value: TYPE_QUINA,
+        },
+      ],
     };
   },
   props: {
@@ -92,8 +75,8 @@ export default {
   },
   methods: {
     ...mapActions(["changeCardToQuina", "changeCardToSena"]),
-    onChangeGameCard({ target }) {
-      switch (target.value) {
+    onChangeGameCard(value) {
+      switch (value) {
         case TYPE_SENA:
           this.changeCardToSena();
           break;
